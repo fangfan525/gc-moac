@@ -1,0 +1,77 @@
+<div class="banner">
+  <div class="nav">
+    <div class="container">
+      <div class="logo v-center"></div>
+      <ul class="v-center">
+        <li ui-sref='index.index'>首页</li>
+        <li ui-sref='index.prods'>全部项目</li>
+        <li ui-sref='index.active'>活动动态</li>
+        <li ui-sref='index.intro'>介绍</li>
+      </ul>
+      <!--<button class="btn_login">登录/注册</button>-->
+      <div class="login">
+        <!--<a ui-sref="login"><span>登录</span></a>-->
+        <a ui-sref="login"><span>登录/注册</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="left">
+      <ul>
+        <li ng-class="{'selected': personTab === 'account'}" ng-click="personTab = 'account'">账号信息</li>
+        <li ng-class="{'selected': personTab === 'money'}"  ng-click="personTab = 'money'">发起提币</li>
+        <li ng-class="{'selected': personTab === 'order'}"  ng-click=" personTab = 'order'">我的单号</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div ng-show="personTab === 'account'">
+        <h5>账号管理</h5>
+        <div class="per_detail">
+          <p>账号：</p>
+          <p>地址：</p>
+          <p>余额：</p>
+        </div>
+        <div class="record">
+          <ul>
+            <li ng-class="{selected : recordTab === 'record1'}" ng-click="recordTab = 'record1'">捐献记录</li>
+            <li ng-class="{selected : recordTab === 'record2'}" ng-click="recordTab = 'record2'">提币记录</li>
+            <li ng-class="{selected : recordTab === 'record3'}" ng-click="recordTab = 'record3'">中奖记录</li>
+          </ul>
+          <div ng-show="recordTab === 'record1'">
+            <p>2018-10-01 13:00:00 捐赠 2 Moac</p>
+            <p>2018-10-01 14:00:00 捐赠 4 Moac</p>
+          </div>
+          <div ng-show="recordTab === 'record2'">
+            <p>2018-10-02 09:00:00 提币 5 Moac</p>
+            <p>2018-10-02 23:00:00 提币 10 Moac</p>
+          </div>
+          <div ng-show="recordTab === 'record3'">
+            <p>2018-10-01 13:00:00 中奖 200 Moac</p>
+          </div>
+        </div>
+      </div>
+
+      <div  ng-show="personTab === 'money'">
+        <h5>提币</h5>
+        <div class="per_detail">
+          <p>账号：</p>
+          <p>地址：</p>
+          <p class="per_detail_p"><button>发起提币</button></p>
+        </div>
+      </div>
+
+      <div ng-show="personTab === 'order'">
+        <h5>单号</h5>
+        <div class="per_detail state">
+          <p><span>41587876631446</span><span>中奖【二等奖】</span></p>
+          <p><span>97784093093983</span><span>未中奖</span></p>
+          <p><span>25447795614414</span><span>待开奖</span></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+

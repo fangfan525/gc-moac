@@ -1,0 +1,60 @@
+<div class="banner">
+    <div class="nav">
+        <div class="container">
+            <div class="logo v-center"></div>
+            <ul class="v-center">
+                <li ui-sref='index.index'>首页</li>
+                <li ui-sref='index.prods'>全部项目</li>
+                <li ui-sref='index.active'>活动动态</li>
+                <li ui-sref='index.intro'>介绍</li>
+            </ul>
+            <!--<button class="btn_login">登录/注册</button>-->
+            <div class="login">
+              <!--<a ui-sref="login"><span>登录</span></a>-->
+              <a ui-sref="login"><span>登录/注册</span></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content">
+  <div class="container">
+    <div class="login_register">
+      <div class="card">
+        <div class="card_cont">
+          <div class="card_nav">
+            <span ng-click="tab ='login'" ng-class= "{'selected': tab ==='login'}">登录</span> <span ng-click="tab = 'register'" ng-class="{'selected': tab ==='register'}">注册</span>
+          </div>
+
+          <div class="login_con" ng-show="tab==='login'">
+            <div><input type="email" placeholder="请输入邮箱"></div>
+            <div><input type="password" placeholder="请输入密码"></div>
+            <div class="slider">
+              <div class="drag">
+                <div class="drag_bg"></div>
+                <div class="drag_text">拖动滑块验证</div>
+                <div class="handler handler_bg"></div>
+              </div>
+            </div>
+            <div><button class="login_btn" ui-sref="person">登录</button></div>
+            <div class="forgot"><p><a href="javascript:void(0)" ng-click="tab='register'">免费注册帐户</a> | <a ui-sref="forgot">忘记密码</a></p></div>
+          </div >
+
+
+          <div class="login_con" ng-show="tab==='register'">
+            <div><input type="email" placeholder="请输入邮箱"></div>
+            <div class="send"><input type="password" placeholder="请输入验证码"><span>发送验证码</span></div>
+            <div><input type="password" placeholder="请输入密码"></div>
+            <div><input type="password" placeholder="请确认密码"></div>
+
+            <div><button class="login_btn">下一步</button></div>
+            <div class="forgot"><p>已有帐户 | <a href="javascript:void(0)" ng-click="tab='login'">去登录</a></p></div>
+          </div>
+
+        </div>
+      </div>
+      <div class="icon">
+        <img src="../images/login_img.jpg" alt="login">
+      </div>
+    </div>
+  </div>
+</div>

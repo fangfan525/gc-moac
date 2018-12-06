@@ -1,0 +1,579 @@
+body{
+    width:100%;
+    height:100%;
+    min-width: 1200px;
+}
+header{
+    width:100%;
+    height:50px;
+    background: #000;
+    vertical-align: middle;
+}
+.container{
+    width:1200px;
+    height:100%;
+    margin:0 auto;
+    overflow: hidden;
+}
+.v-center{
+    position: relative;
+    top: 50%; /*偏移*/
+    transform: translateY(-50%);
+}
+header span{
+    font-size:12px;
+    color: #fff;
+    margin-right:72px;
+}
+header span.selected{
+    color: #ffbf0c;
+}
+
+.banner .nav{
+    width:100%;
+    height:70px;
+    background: -webkit-linear-gradient(#ff9f13, #ffbf0c); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(#ff9f13, #ffbf0c); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(#ff9f13, #ffbf0c); /* Firefox 3.6 - 15 */
+    background: linear-gradient(#ff9f13, #ffbf0c); /* 标准的语法 */
+}
+.banner .nav .container{
+    position: relative;
+}
+.logo{
+    width:120px;
+    height: 30px;
+    background: url("../images/logo.png") no-repeat;
+    float: left;
+    margin-left:22px;
+}
+.nav ul{overflow: hidden;}
+.nav li{
+    float:left;
+    padding-left:70px;
+    color: #fff;
+    font-size: 14px;
+}
+.nav li:hover,.login a:hover{
+    color: #ff0000;
+    cursor: pointer;
+}
+.login{
+    position: absolute;
+    top: 24px;
+    right: 20px;
+    font-size: 14px;
+}
+.login a{
+    text-decoration: none;
+    color: #fff;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.banner .img{
+    width: 100%;
+    overflow: hidden;
+}
+.banner .photo{
+    width: 200%;
+    animation: switch 5s ease-out infinite;
+}
+.banner .img img{
+    float:left;
+    width: 50%;
+}
+.content{
+    width:100%;
+    overflow: hidden;
+    background-color: #f5f5f5;
+}
+.content .title{
+    text-align: left;
+    font-size: 24px;
+    font-weight: 400;
+    color: #ff8400;
+    padding-left: 11px;
+    height: 24px;
+    line-height: 24px;
+    border-left: 5px solid #ff8400;
+    margin: 42px 0;
+}
+.lists{
+    padding: 0 70px;
+}
+.list{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+.list img{
+    width: 200px;
+    height: 200px;
+}
+.scroll{
+    width: 438px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.scroll p{
+    font-size:14px;
+    text-align: center;
+}
+.progress{
+    width: 100%;
+    height: 12px;
+    line-height: 35px;
+    margin-top: 12px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    position: relative;
+}
+.progress span{
+    position: absolute;
+    right: -56px;
+    top: -12px;
+}
+.progress-bar{
+    width: 75%;
+    position: relative;
+    border-radius: 10px 0 0 10px;
+    animation: animate-positive 2s;
+    float: left;
+    /* width: 0; */
+    height: 100%;
+    background-color: #ff8400;
+}
+.list button{
+    height: 38px;
+    width: 100px;
+    background-color: #ff8400;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    color: #fff;
+    margin-top: 102px;
+}
+
+footer{
+    width: 100%;
+    background-color: #4e4e4e;
+    overflow: hidden;
+}
+footer .container div{
+    float:left;
+    width: 33%;
+    color: #fff;
+    margin: 18px 0;
+}
+footer .container div:first-child{
+    border-right: 1px solid #fff;
+    height: 228px;
+    width: 26%;
+    margin: 18px 5% 18px 0;
+}
+footer .container div:first-child p{
+    font-size: 14px;
+    padding-left: 10px;
+}
+footer .container div:nth-child(2) h5{
+    font-size: 14px;
+    padding: 16px 0 36px;
+}
+footer .container div:nth-child(2) p{
+    line-height: 30px;
+}
+footer .container div:last-child{
+    text-align: right;
+    padding: 30px 0 50px;
+}
+footer .container div:last-child p{
+    margin-right: 5%;
+    margin-top: 2%;
+    position: relative;
+    right: 35px;
+    font-size:12px;
+}
+.logo_img{
+    width:120px;
+    height: 30px;
+    margin: 24px 0 44px;
+}
+.weinxin_img{
+    width: 120px;
+    height: 120px;
+    margin-right: 5%;
+}
+
+/*项目详情*/
+.between{
+    display: flex;
+    justify-content: space-between;
+}
+.center{
+    display: flex;
+    justify-content: center;
+}
+.resume{
+    width: 100%;
+    overflow: hidden;
+}
+.resume img{
+    width: 38%;
+    float: left;
+}
+.resume .mask{
+    width: 58%;
+    float: right;
+}
+.mask > div{
+    padding: 0 1%;
+}
+.mask p{
+    line-height: 32px;
+}
+.mask .progress{
+    margin: 12px 0;
+}
+.mask .progress span{
+    position: relative;
+    top: 8px;
+    left: 0;
+}
+.mask .progress-bar{width: 60%;}
+.sup{
+    margin-top: 10px;
+}
+.sup div{
+    float: left;
+    margin-right: 50px;
+    background-color: #ff8400;
+    padding: 6px;
+    border-radius: 4px;
+}
+.sup span{
+    display: inline-block;
+    font-size: 32px;
+    height: 32px;
+    line-height: 32px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.sup input{
+    display: inline-block;
+    width: 40px;
+    height: 32px;
+    padding: 0 5px;
+    margin: 0 12px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+}
+.sup button{
+    background-color: #ff8400;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.intro{
+    width: 100%;
+    margin-bottom: 40px;
+}
+.intro h5{
+    text-align: left;
+    font-size: 18px;
+    height: 24px;
+    line-height: 18px;
+    margin-top: 20px;
+}
+.intro p{
+    line-height: 32px;
+    text-indent:2em;
+}
+
+/*个人中心*/
+.left{
+    float: left;
+    width: 15%;
+    margin: 0 1%;
+    text-align: center;
+    background-color: #fff;
+    overflow: hidden;
+    margin-top: 46px;
+}
+.left ul li{
+    padding: 20px 0;
+    font-size: 14px;
+    cursor: pointer;
+}
+.left ul li:hover, .record ul li:hover{
+  color: #ff8400;
+}
+.left ul li.selected,.record ul li.selected{
+    background-color: #ff8400;
+    color:#fff;
+}
+.right{
+    float: right;
+    width: 80%;
+    margin-top: 46px;
+    min-height: 500px;
+}
+.right h5{
+    font-size: 16px;
+    font-weight: 400;
+    padding: 2px 11px;
+    border-left: 5px solid #ff8400;
+    margin-bottom: 20px;
+}
+.right .per_detail{
+    margin-bottom: 42px;
+    border: 1px solid #eee;
+    border-bottom: none;
+}
+.per_detail p{
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+    height: 48px;
+    line-height:48px;
+    padding: 0 20px;
+}
+.per_detail .per_detail_p{
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+}
+.per_detail button{
+    background-color: #ff8400;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 16px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+.record{
+    border: 1px solid #eee;
+    overflow: hidden;
+    background-color: #fff;
+    margin-bottom: 40px;
+}
+.record ul{
+    overflow: hidden;
+
+}
+.record ul li{
+    float: left;
+    border-right: 1px solid #eee;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.record p{
+    border-top: 1px solid #eee;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 20px;
+}
+.state p span:last-child{
+    float:right;
+}
+
+
+/*登录*/
+.login_register{
+    width: 100%;
+    margin: 54px auto 110px;
+    box-sizing: border-box;
+    display: -ms-flexbox;
+    display: flex;
+ }
+.login_register .card{
+    border: 1px solid #ebeef5;
+    background-color: #fff;
+    color: #303133;
+    transition: .3s;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
+}
+.card_cont{
+    min-width: 440px;
+    padding: 83px 120px;
+    background-color: #fff;
+}
+.card_nav{
+     box-sizing: border-box;
+     border: 1px solid #ddd;
+     border-radius: 4px;
+     height: 40px;
+     overflow: hidden;
+     margin-bottom: 40px;
+ }
+.card_nav span{
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    cursor: pointer;
+    font-size: 14px;
+}
+.card_nav span:hover{
+    color: #ff8400;
+}
+.card_nav span.selected{
+    background-color: #ff8400;
+    color: #fff;
+}
+.login_con{
+    width: 100%;
+}
+.login_con div{
+    height: 40px;
+    margin: 28px 0;
+}
+.login_con div input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+}
+.login_con .slider{
+    position: relative;
+ }
+.login_con .drag{
+    position: relative;
+    background-color: #e8e8e8;
+    margin-top: 100px;
+    line-height: 40px;
+    text-align: center;
+}
+.login_con .drag_bg{
+    background-color: #4db872;
+    height: 40px;
+    width: 0;
+    margin:0;
+}
+.login_con  .drag_text{
+    position: absolute;
+    top: 0;
+    width: 440px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    font-size: 14px;
+    margin: 0;
+}
+.login_con  .handler{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 38px;
+    border: 1px solid #ccc;
+    cursor: move;
+    margin: 0;
+    background: #fff url("../images/hadler_bj.png") no-repeat 50%;
+}
+.login_con .handler_ok{
+    background-image: url("../images/drag_ok.png");
+}
+.login_btn{
+    width: 100%;
+    background-color: #c8c9cc;
+    line-height: 1;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.forgot{
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-top: -28px !important;
+}
+.forgot a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+}
+.forgot a:hover{
+    color: #ff8400;
+}
+.send{
+    position: relative;
+}
+.send span{
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #105fff;
+}
+.login_register .icon{
+    width: 520px;
+}
+
+/*忘记密码*/
+.pwd_cont{
+    width: 440px;
+    padding: 60px 120px 83px;
+    margin: 0 auto;
+    background-color: transparent;
+}
+.pwd_cont > p{
+    font-size: 24px;
+    text-align: center;
+}
+.pwd_cont .login_btn{
+    background-color: #ff8400;
+}
+
+
+
+
+@-webkit-keyframes animate-positive {
+    0% { width: 0;}
+}
+@keyframes animate-positive {
+    0% { width:0; }
+}
+
+
+@keyframes switch {
+    0%, 25% {
+        margin-left: 0;
+    }
+    35%, 60% {
+        margin-left: -100%;
+    }
+    70%, 100% {
+        margin-left: 0;
+    }
+}
+@-webkit-keyframes switch {
+    0%, 25% {
+        margin-left: 0;
+    }
+    35%, 60% {
+        margin-left: -100%;
+    }
+    70%, 100% {
+        margin-left: 0;
+    }
+}
