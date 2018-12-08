@@ -41,7 +41,7 @@ module.exports.routes = {
   'GET /util/email': 'UtilsController.sendEmailCode',
 
   //首页数据
-  'POST /index': 'IndexController.index',
+  'GET /index': 'IndexController.index',
   //项目列表
   'POST /productList': 'ProductController.productList',
   //项目详情

@@ -1,29 +1,16 @@
 <div class="lists">
       <p class="title">在捐项目</p>
-      <div class="list">
-        <img src="../images/pro_2.jpg" alt="">
+      <div class="list" ng-repeat="prod in product">
+        <div><img src="{{prod.logo}}" alt=""><p>{{prod.title}}</p></div>
         <div class="scroll">
           <div style="margin-top:72px;">
-            <p>起投 2moac</p>
+            <p>起投 {{prod.num}} moac</p>
             <div class="progress">
-              <div class="progress-bar"></div>
-              <span>75%</span>
+              <div class="progress-bar" style="width:{{prod.current_num * 100 / prod.total_num}}%"></div>
+              <span>{{prod.current_num * 100 / prod.total_num}}%</span>
             </div>
           </div>
         </div>
-        <button ui-sref="details">立即支持</button>
-      </div>
-      <div class="list">
-        <img src="../images/pro_1.jpg" alt="">
-        <div class="scroll">
-          <div style="margin-top:72px;">
-            <p>起投 4moac</p>
-            <div class="progress">
-              <div class="progress-bar"></div>
-              <span>60%</span>
-            </div>
-          </div>
-        </div>
-        <button ui-sref="details">立即支持</button>
+        <button ui-sref="details({id: {{prod.id}}})" >立即支持</button>
       </div>
     </div>

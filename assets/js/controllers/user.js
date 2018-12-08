@@ -11,16 +11,6 @@ angular.module('moac')
     //   $state.go('index');
     // }
   }])
-
-  .controller('IndexCtrl', ['$scope', '$rootScope', '$http', '$state',
-    function ($scope, $rootScope, $http, $state) {
-
-    }])
-
-  .controller('DetailsCtrl', ['$scope', '$rootScope', '$http', '$state',
-    function ($scope, $rootScope, $http, $state) {
-
-    }])
   .controller('ForgotCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
       //发送验证码
@@ -89,7 +79,6 @@ angular.module('moac')
             $state.go('login');
           });
       };
-
       $scope.getUserInfo = function() {
         $http.get('/userCenter')
           .success(function(ret, status) {
@@ -111,13 +100,32 @@ angular.module('moac')
           });
       };
       $scope.getUserInfo();
-
       $scope.submitTibi = function (tibi) {
         if(!tibi || !tibi.addr || !tibi.amount){
           toastr.warning('请将信息填写完整');
           return;
         }
-
+        $http({
+          method: "POST",
+          url: "/tibi",
+          dataType: 'json',
+          data: {
+            'address': tibi.addr,
+            'num': tibi.amount
+          }
+        }).success(function (result, status) {
+          if (!result.code) {
+            if(ret.msg === '你还没有登录'){
+              toastr.error(ret.msg);
+              $state.go('login');
+              return;
+            }
+            toastr.error(result.msg);
+          }else{
+            tibi = null;
+            toastr.success(result.msg);
+          }
+        });
       }
 
     }])

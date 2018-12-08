@@ -46,7 +46,7 @@ moac.config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'templates/index/tab4.html'
       })
       .state('details', {
-        url: '/details',
+        url: '/details/:id',
         templateUrl: 'templates/details.html',
         controller:'DetailsCtrl'
       })
@@ -72,5 +72,10 @@ moac.config(['$stateProvider', '$urlRouterProvider',
       var date = new Date(value * 1000);
       return dateFormat("yyyy-MM-dd hh:mm:ss", date);
     };
+  })
+  .filter('email', function () {
+    return function (email) {
+      return (email.substr(0,3) + '...' + email.substring(email.indexOf('@'), email.indexOf('@') - 3) + email.substr(email.indexOf('@')));
+    }
   });
 
