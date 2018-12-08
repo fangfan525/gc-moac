@@ -13,7 +13,8 @@ module.exports = {
     register:async function(req,res){
         var email=req.body.email;
         var pwd=req.body.pwd;
-        var pwdtrade=req.body.pwdtrade;
+        var verifyCode = req.body.verify_code;
+        // var pwdtrade=req.body.pwdtrade;
         if(!email){
             res.json({
                 code:0,
@@ -26,13 +27,21 @@ module.exports = {
                 msg:"密码不能为空"
             });
         }
-        if(!pwdtrade){
-            res.json({
-                code:0,
-                msg:"交易密码不能为空"
-            });
-        }
-        var user=findOne({email:email});
+        // if(!pwdtrade){
+        //     res.json({
+        //         code:0,
+        //         msg:"交易密码不能为空"
+        //     });
+        // }
+    if (verifyCode !== req.session.verifyCode) {
+      return res.feedback(false, null, CONST.ERR_INVALID_CODE);
+    }
+    // expired 300s
+    var now = new Date().getTime();
+    if (now - req.session.verifyCodeTime > 60000 * 5) {
+      return res.feedback(false, null, CONST.ERR_CODE_TIMEOUT);
+    }
+        var user=await User.findOne({email:email});
         if(user){
             res.json({
                 code:0,
@@ -40,7 +49,7 @@ module.exports = {
             });
         }
         var timestamp = (new Date()).getTime();
-        var usercreate=await User.findOrCreate({email,email},{email:email,pwd:pwd,pwdtrade:pwdtrade,create_time:timestamp});
+        var usercreate=await User.findOrCreate({email : email},{email:email,pwd:pwd,/*pwdtrade:pwdtrade,*/create_time:timestamp});
         //添加地址
         var account=chainService.getAccount();
         await Usercurrency.create({user_id:usercreate.id,num:0,address:account});
@@ -50,11 +59,11 @@ module.exports = {
             code:1,
             msg:"添加成功"
         });
-        
+
     },
 
     /**
-     * 
+     *
      * 用户登录
      */
     login: async function (req, res) {
@@ -72,14 +81,14 @@ module.exports = {
               code:0,
               msg:'用户不存在'
             });
-            
+
           } else if (pwd != user.pwd) {
             return res.json({
               code:0,
               msg:'密码错误'
-      
+
             });
-          } 
+          }
 
           req.session.user = user;
           return res.json({
@@ -105,7 +114,7 @@ module.exports = {
 
       /**
        * 个人中心
-       * 
+       *
        */
       userCenter: async function(req,res){
         var user = req.session.user;
@@ -140,7 +149,7 @@ module.exports = {
 
       }
 
-  
+
 
 };
 

@@ -35,6 +35,9 @@ module.exports.routes = {
   //个人中心
   'POST /userCenter': 'UserController.userCenter',
 
+  //发送邮箱验证码
+  'GET /util/email': 'UtilsController.sendEmailCode',
+
   //首页数据
   'POST /index': 'IndexController.index',
   //项目列表

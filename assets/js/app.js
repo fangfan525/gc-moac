@@ -1,5 +1,5 @@
 'use strict';
-
+toastr.options.positionClass = "toast-bottom-right";
 var moac = angular.module('moac', ['ui.router']);
 
 moac.config(['$stateProvider', '$urlRouterProvider',
