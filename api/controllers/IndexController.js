@@ -15,7 +15,10 @@ module.exports = {
             code:1,
             product:product
         });
-        
+
+    },
+    //中奖公告
+    notice:async function(req,res){
 
     }
   

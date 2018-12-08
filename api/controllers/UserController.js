@@ -123,10 +123,17 @@ module.exports = {
         var trade=await Trade.find({user_id:user.id});
         //获取中奖记录
         var reward= await Reward.find({user_id:user.id});
+        //获取中奖记录的订单号
+        for(var i=0;i<reward.length;i++){
+            reward[i]['order_no']=await Order.findOne({id:reward.order_id});
+
+        }
         //获取余额
         var balance=chainService.getBalance(userCurrency.address);
         //获取提币记录
         var tibi=await Tibi.find({user_id:user.id});
+        //用户订单
+        var order=await Order.find({user_id:user.id});
         return res.json({
             code:1,
             user:user,
@@ -134,7 +141,8 @@ module.exports = {
             trade:trade,
             reward:reward,
             balance:balance,
-            tibi:tibi
+            tibi:tibi,
+            order:order
         });
 
 
