@@ -11,7 +11,9 @@
       <!--<button class="btn_login">登录/注册</button>-->
       <div class="login">
         <!--<a ui-sref="login"><span>登录</span></a>-->
-        <a ui-sref="login"><span>登录/注册</span></a>
+        <a ui-sref="login"  ng-show="!user"><span>登录/注册</span></a>
+        <a href="javascript:void(0);" ng-show="user"><span>{{ user }}</span></a>
+        <a href="javascript:void(0);"  ng-show="user" ng-click="logout();"><span>退出</span></a>
       </div>
     </div>
   </div>
@@ -39,8 +41,8 @@
                                 <p>接收方：新疆光明小学</p>
                                 <p>起投：{{prod_details.num}}Moac</p>
                                 <div class="sup">
-                                    <div><span>-</span><input type="text" value="{{prod_details.num}}"><span>+</span></div>
-                                    <button>立即支持</button>
+                                    <div><span ng-click="sub();">-</span><input type="text" value="{{num}}"><span ng-click="add();">+</span></div>
+                                    <button ng-click="support();">立即支持</button>
                                 </div>
                             </div>
                         </div>

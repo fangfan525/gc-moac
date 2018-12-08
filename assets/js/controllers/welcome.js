@@ -22,6 +22,16 @@ angular.module('moac')
 
   .controller('DetailsCtrl', ['$scope', '$rootScope', '$http', '$state','$stateParams',
     function ($scope, $rootScope, $http, $state,$stateParams) {
+      $scope.add = function () {
+        if($scope.num >=($scope.prod_details.total_num - $scope.prod_details.current_num))
+          return;
+        $scope.num += $scope.prod_details.num;
+      };
+      $scope.sub = function () {
+        if($scope.num <=$scope.prod_details.num)
+          return;
+        $scope.num -= $scope.prod_details.num;
+      };
       $scope.getDetails = function(){
         var id = $stateParams.id;
         if(id === undefined || id === null || id===''){
@@ -35,10 +45,27 @@ angular.module('moac')
           }else{
             console.log(JSON.stringify(result.product));
             $scope.prod_details = result.product;
+            $scope.num = $scope.prod_details.num;
           }
         });
       };
       $scope.getDetails();
+
+      $scope.support = function(){
+        var id = $stateParams.id;
+        if(id === undefined || id === null || id===''){
+          toastr.warning("未选中项目！");
+          $state.go('index.index');
+          return ;
+        }
+        $http.post('/trade', {id: id, num: $scope.num}).success(function (result, status) {
+          if (!result.code) {
+            toastr.error(result.msg);
+          }else{
+            toastr.success(result.msg);
+          }
+        });
+      };
     }])
   .controller('LoginCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
