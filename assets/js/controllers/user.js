@@ -29,6 +29,20 @@ angular.module('moac')
     function ($scope, $rootScope, $http, $state) {
       $scope.personTab = 'account';//account账号信息；money提币；order我的单号
       $scope.recordTab = 'record1';//record1捐献记录；record2提币记录；record3中奖记录
+      $scope.logout = function() {
+        $http.get('/logout')
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            $rootScope.isLogin = false;
+            $rootScope.user = null;
+            localStorage.clear();
+            toastr.success(ret.msg);
+            $state.go('login');
+          });
+      };
+
     }])
 
 ;

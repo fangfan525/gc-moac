@@ -31,7 +31,7 @@ module.exports.routes = {
   //用户登录
   'POST /login': 'UserController.login',
   //退出登录
-  'POST /logout': 'UserController.logout',
+  'GET /logout': 'UserController.logout',
   //个人中心
   'POST /userCenter': 'UserController.userCenter',
 
