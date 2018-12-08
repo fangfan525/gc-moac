@@ -122,6 +122,7 @@ angular.module('moac')
         var ele = window.event.target || window.event.target;
         ele.style.cursor = 'noe-allowed';
         ele.disabled = true;
+        user.pwd = hex_md5(user.pwd);
         $http.post('/register', user)
           .success(function(ret, status) {
             if (!ret.code || status !== 200) {
@@ -133,7 +134,9 @@ angular.module('moac')
             ele.style.cursor = 'pointer';
             ele.disabled = false;
             $rootScope.isLogin = true;
+            $rootScope.user = user.email;
             localStorage.setItem('isLogin', $rootScope.isLogin);
+            localStorage.setItem('user', $rootScope.user);
             $state.go('person');
           });
       };
@@ -147,13 +150,16 @@ angular.module('moac')
           toastr.warning('请输入合法的邮箱地址');
           return;
         }
+        user.password = hex_md5(user.password);
         $http.post('/login', user)
           .success(function(ret, status) {
             if (!ret.code || status !== 200) {
               return toastr.error(ret.msg);
             }
             $rootScope.isLogin = true;
+            $rootScope.user = user.email;
             localStorage.setItem('isLogin', $rootScope.isLogin);
+            localStorage.setItem('user', $rootScope.user);
             toastr.success(ret.msg);
             $state.go('person');
           });
