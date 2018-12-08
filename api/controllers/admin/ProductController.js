@@ -4,7 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
+var chainService=require('../services/chainservice');
 module.exports = {
     /**
      * 项目列表
@@ -51,7 +51,7 @@ module.exports = {
         var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
         var timestamp = (new Date()).getTime();
         if(hash){
-            await Ptrade.findOrCreate({num:amount,gas:gasPrice,hash:hash,create_time:timestamp,status:1});
+            await Ptrade.findOrCreate({num:amount,gas:gasPrice.gasPrice,hash:hash,create_time:timestamp,status:1});
 
         }else{
             return res.json({
@@ -70,7 +70,7 @@ module.exports = {
 
         var hashu = chainService.send(accountu.address, accountu.secret, toAddressu, amountu, txCountu = -1,gasPrice.gasPrice);
         if(hashu){
-            await trade.findOrCreate({user_id:userOrder.user_id,num:amountu,gas:gasPrice,hash:hashu,create_time:timestamp,status:1});
+            await trade.findOrCreate({user_id:userOrder.user_id,num:amountu,gas:gasPrice.gasPrice,hash:hashu,create_time:timestamp,status:1});
             await Reward.findOrCreate({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
 
             return res.json({
