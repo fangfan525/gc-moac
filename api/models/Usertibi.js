@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    id:           { type: 'number', utoIncrement: true },
+    id:           { type: 'number', autoIncrement: true },
     user_id:      { type: 'number'},
     create_time:  { type: 'string'},
     address:      { type: 'string'},
