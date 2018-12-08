@@ -4,7 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-var chainService=require('../services/chainservice');
+var chainService=require('../../services/chainservice');
 module.exports = {
     /**
      * 项目列表
