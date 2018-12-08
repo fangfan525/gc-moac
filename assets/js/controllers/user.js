@@ -23,7 +23,54 @@ angular.module('moac')
     }])
   .controller('ForgotCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
-
+      //发送验证码
+      $scope.sendEmail = function(user){
+        var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+        if(!user || !user.email){
+          toastr.warning("请填写邮箱地址！");
+          return ;
+        }
+        if(!pattern.test(user.email)){
+          toastr.warning('请输入合法的邮箱地址');
+          return;
+        }
+        $http({
+          method: "GET",
+          url: '/util/email?email='+ user.email
+        }).success(function (result, status) {
+          if (!result.success) {
+            toastr.error(result.msg);
+          }else{
+            toastr.success(result.msg);
+          }
+        });
+      };
+      //重置密码
+      $scope.resetPwd = function (user) {
+        if(!user || !user.pwd || !user.pwd2 || !user.email || !user.verify_code){
+          toastr.warning('请将注册信息填写完整');
+          return;
+        }
+        if(user.pwd !== user.pwd2){
+          toastr.warning('两次密码不一致');
+          return;
+        }
+        $http({
+          method: "POST",
+          url: "/reset",
+          dataType: 'json',
+          data: {
+            'email': user.email,
+            'pwd': hex_md5(user.pwd)
+          }
+        }).success(function (result, status) {
+          if (!result.code) {
+            toastr.error(result.msg);
+          }else{
+            toastr.success(result.msg);
+          }
+        });
+      };
     }])
   .controller('PersonCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
