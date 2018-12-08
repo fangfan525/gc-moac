@@ -48,8 +48,6 @@ module.exports.routes = {
   'POST /productDetail': 'ProductController.productDetail',
   //项目交易
   'POST /trade': 'ProductController.trade',
-  //项目放款
-  'POST /lottery': 'ProductController.lottery',
   //添加提币地址
   'POST /addTibiAddress': 'TibiController.addTibiAddress',
   //提币操作
@@ -67,6 +65,8 @@ module.exports.routes = {
   /*后台请求接口 */
   //项目列表数据
   'POST /admins/productList': 'admin/ProductController.productList',
+  //项目放款
+  'POST /admins/lottery': 'admin/ProductController.lottery',
 
 
 
