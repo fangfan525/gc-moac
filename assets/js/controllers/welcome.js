@@ -132,7 +132,7 @@ angular.module('moac')
             toastr.success(ret.msg);
             ele.style.cursor = 'pointer';
             ele.disabled = false;
-            $state.go('user');
+            $state.go('person');
           });
       };
       $scope.login = function(user) {
