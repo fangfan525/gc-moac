@@ -132,36 +132,30 @@ angular.module('moac')
             toastr.success(ret.msg);
             ele.style.cursor = 'pointer';
             ele.disabled = false;
+            $rootScope.isLogin = true;
+            localStorage.setItem('isLogin', $rootScope.isLogin);
             $state.go('person');
           });
       };
       $scope.login = function(user) {
-        if(!user || !user.name || !user.pwd){
+        var pattern = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
+        if(!user || !user.email || !user.password){
           toastr.error("请完整填写表单！");
           return ;
-        }else if(user.pwd.length<6){
-          toastr.error("密码长度不能小于6位！");
-          return ;
-        }else{
-          // if(localStorage.getItem('isLogin')){
-          //    toastr.error('已经有用户登陆，请退出后再登陆另一账号或者尝试清除本地cookies！');
-          //    return;
-          // }
-          $http.post('/login', user)
-            .success(function(ret, status) {
-              if (!ret.success || status !== 200) {
-                return toastr.error(ret.msg);
-              }
-              $rootScope.isLogin = true;
-              $rootScope.isAdmin = false;
-              $rootScope.user = ret.data;
-              localStorage.setItem('isLogin', $rootScope.isLogin);
-              localStorage.setItem('isAdmin', false);
-              localStorage.setItem('user', JSON.stringify($rootScope.user));
-              toastr.success(ret.msg);
-              $state.go('user');
-            });
         }
-
+        if(!pattern.test(user.email)){
+          toastr.warning('请输入合法的邮箱地址');
+          return;
+        }
+        $http.post('/login', user)
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            $rootScope.isLogin = true;
+            localStorage.setItem('isLogin', $rootScope.isLogin);
+            toastr.success(ret.msg);
+            $state.go('person');
+          });
       };
     }])
