@@ -10,6 +10,18 @@ angular.module('moac')
     // if (!$rootScope.isLogin) {
     //   $state.go('index');
     // }
+    $rootScope.getprods = function() {
+      $http.get('/productList')
+        .success(function(ret, status) {
+          if (!ret.code || status !== 200) {
+            return toastr.error(ret.msg);
+          }
+          $rootScope.prods = ret.product; //全部项目列表
+        });
+    };
+    if(location.href.indexOf('prods')){
+      $rootScope.getprods();
+    }
     $rootScope.logout = function() {
       $http.get('/logout')
         .success(function(ret, status) {

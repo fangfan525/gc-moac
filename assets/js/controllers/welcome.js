@@ -17,7 +17,6 @@ angular.module('moac')
           });
       };
       $scope.getIndexInfo();
-
     }])
 
   .controller('DetailsCtrl', ['$scope', '$rootScope', '$http', '$state','$stateParams',

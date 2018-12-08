@@ -43,7 +43,7 @@ module.exports.routes = {
   //首页数据
   'GET /index': 'IndexController.index',
   //项目列表
-  'POST /productList': 'ProductController.productList',
+  'GET /productList': 'ProductController.productList',
   //项目详情
   'POST /productDetail': 'ProductController.productDetail',
   //项目交易

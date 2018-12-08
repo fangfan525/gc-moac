@@ -4,7 +4,7 @@
       <div class="logo v-center"></div>
       <ul class="v-center">
         <li ui-sref='index.index'>首页</li>
-        <li ui-sref='index.prods'>全部项目</li>
+        <li ui-sref='index.prods' ng-click="getprods()">全部项目</li>
         <li ui-sref='index.active'>活动动态</li>
         <li ui-sref='index.intro'>介绍</li>
       </ul>
@@ -12,7 +12,7 @@
       <div class="login">
         <!--<a ui-sref="login"><span>登录</span></a>-->
         <!--<a ui-sref="login" ng-hide="isLogin===true;"><span>登录/注册</span></a>-->
-        <a href="javascript:void(0);"><span>{{ user }}</span></a>
+        <a href="javascript:void(0);"  ui-sref="person"><span>{{ user }}</span></a>
         <a href="javascript:void(0);" ng-click="logout();"><span>退出</span></a>
       </div>
     </div>
@@ -46,11 +46,11 @@
             <!--<p>2018-10-01 14:00:00 捐赠 4 Moac</p>-->
           </div>
           <div ng-show="recordTab === 'record2'">
-            <p ng-repeat="ti in tibi">{{ti.create_time | time}} 提币 {{ti.num}} Moac, 状态: {{ti.status | status}} , 交易哈希： {{ti.hash}}</p>
+            <p ng-repeat="ti in tibi">{{ti.create_time | time}} 提币 {{ti.num}} Moac, 状态: {{ti.status | status}} , 交易哈希： {{ti.hash ? ti.hash : '还未提币'}}</p>
             <!--<p>2018-10-02 23:00:00 提币 10 Moac</p>-->
           </div>
           <div ng-show="recordTab === 'record3'">
-            <p ng-repeat="re in reward">{{re.create_time | time}} 中奖 {{re.num}} Moac, 中奖单号：{{re.order_no.order_no}}</p>
+            <p ng-repeat="re in reward">{{re.create_time | time}} 中奖 {{re.num}} Moac, 中奖单号：{{re.order_no.order_no ? re.order_no.order_no : '还未开奖'}}</p>
           </div>
         </div>
       </div>

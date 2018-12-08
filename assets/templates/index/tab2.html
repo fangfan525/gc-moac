@@ -1,3 +1,16 @@
 <div class="lists">
   <p class="title">全部项目</p>
+  <div class="list" ng-repeat="prod2 in prods">
+    <div><img src="{{prod2.logo}}" alt=""><p>{{prod2.title}}</p></div>
+    <div class="scroll">
+      <div style="margin-top:72px;">
+        <p>起投 {{prod2.num}} moac</p>
+        <div class="progress">
+          <div class="progress-bar" style="width:{{prod2.current_num * 100 / prod2.total_num}}%"></div>
+          <span>{{prod2.current_num * 100 / prod2.total_num}}%</span>
+        </div>
+      </div>
+    </div>
+    <button ui-sref="details({id: {{prod2.id}}})" >立即支持</button>
+  </div>
 </div>
