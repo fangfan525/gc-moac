@@ -1,26 +1,26 @@
 {
-  "name": "gc-moac",
+  "name": "gm",
   "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "@sailshq/connect-redis": "^3.2.1",
+    "@sailshq/lodash": "^3.10.3",
+    "@sailshq/socket.io-redis": "^5.2.0",
     "chain3": "^0.1.12",
     "crypto": "^1.0.1",
     "ethereumjs-wallet": "^0.6.2",
-    "sails-mysql": "^1.0.1",
-    "secp256k1": "^3.5.2",
+    "grunt": "1.0.1",
     "gyp": "^0.5.0",
     "keccak": "^1.4.0",
     "python": "0.0.4",
     "sails": "^1.1.0",
-    "grunt": "1.0.1",
     "sails-hook-grunt": "^3.1.0",
     "sails-hook-orm": "^2.1.1",
     "sails-hook-sockets": "^1.5.5",
-    "@sailshq/connect-redis": "^3.2.1",
-    "@sailshq/socket.io-redis": "^5.2.0",
-    "@sailshq/lodash": "^3.10.3"
+    "sails-mysql": "^1.0.1",
+    "secp256k1": "^3.5.2"
   },
   "devDependencies": {
     "@sailshq/eslint": "^4.19.3"
@@ -34,11 +34,11 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/anonymous node/sails user/gc-moac.git"
+    "url": "git://github.com/root/gm.git"
   },
-  "author": "anonymous node/sails user",
+  "author": "root",
   "license": "",
   "engines": {
-    "node": "^8.9"
+    "node": "^8.13"
   }
 }

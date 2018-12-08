@@ -70,7 +70,7 @@ module.exports = {
         if (!user) {
             return res.json({
               code:0,
-              msg:'管理员不存在'
+              msg:'用户不存在'
             });
             
           } else if (pwd != user.pwd) {
