@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    id:           { type: 'number', required: true,autoIncrement: true },
+    id:           { type: 'number', autoIncrement: true },
     user_id:      { type: 'number'},
     product_id:   { type: 'number'},
     trade_id:     { type: 'number'},

@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    id:           { type: 'number', required: true,autoIncrement: true },
+    id:           { type: 'number', autoIncrement: true },
     title:        { type: 'string'},
     logo:         { type: 'string'},
     intro:        { type: 'string'},
