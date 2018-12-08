@@ -1,10 +1,7 @@
 <header>
   <div class="container">
     <p class="v-center">
-      <span class="selected">中奖公布：XXX在捐献中获奖</span>
-      <span>中奖公布：XXX在捐献中获奖</span>
-      <span>中奖公布：XXX在捐献中获奖</span>
-      <span>中奖公布：XXX在捐献中获奖</span>
+      <span ng-repeat="ntc in notice">中奖公布：恭喜{{ntc.userinfo.email | email}}在捐献中获奖{{ntc.num}}Moac</span>
     </p>
   </div>
 </header>

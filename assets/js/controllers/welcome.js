@@ -4,6 +4,42 @@
 'use strict';
 
 angular.module('moac')
+  .controller('IndexCtrl', ['$scope', '$rootScope', '$http', '$state',
+    function ($scope, $rootScope, $http, $state) {
+      $scope.getIndexInfo = function() {
+        $http.get('/index')
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            $rootScope.product = ret.product; //推荐项目列表
+            $rootScope.notice = ret.notice; //中奖公告
+          });
+      };
+      $scope.getIndexInfo();
+
+    }])
+
+  .controller('DetailsCtrl', ['$scope', '$rootScope', '$http', '$state','$stateParams',
+    function ($scope, $rootScope, $http, $state,$stateParams) {
+      $scope.getDetails = function(){
+        var id = $stateParams.id;
+        if(id === undefined || id === null || id===''){
+          toastr.warning("未选中项目！");
+          $state.go('index.index');
+          return ;
+        }
+       $http.post('/productDetail', {id: id}).success(function (result, status) {
+          if (!result.code) {
+            toastr.error(result.msg);
+          }else{
+            console.log(JSON.stringify(result.product));
+            $scope.prod_details = result.product;
+          }
+        });
+      };
+      $scope.getDetails();
+    }])
   .controller('LoginCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
       $scope.tab = 'login';
