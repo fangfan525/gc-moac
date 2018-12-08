@@ -104,6 +104,41 @@ module.exports = {
         });
       },
 
+  /**
+   * 用户重置密码
+   */
+  resetPwd:async function(req,res){
+    var email=req.body.email;
+    var pwd=req.body.pwd;
+
+    if(!email){
+      return res.json({
+        code:0,
+        msg:"邮箱不能为空"
+      });
+    }
+    if(!pwd){
+      return res.json({
+        code:0,
+        msg:"密码不能为空"
+      });
+    }
+    var user=await User.findOne({email:email});
+    if(!user){
+      return res.json({
+        code:0,
+        msg:"该账号还未注册"
+      });
+    }
+    var usercreate=await User.update({email:email},{pwd:pwd});
+    console.log('update usercreate:', usercreate);
+    req.session.user = usercreate;
+    res.json({
+      code:1,
+      msg:"密码修改成功"
+    });
+
+  },
       /**
        * 个人中心
        *

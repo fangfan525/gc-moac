@@ -30,6 +30,8 @@ module.exports.routes = {
   'POST /register': 'UserController.register',
   //用户登录
   'POST /login': 'UserController.login',
+  //重置密码
+  'POST /reset': 'UserController.resetPwd',
   //退出登录
   'GET /logout': 'UserController.logout',
   //个人中心
