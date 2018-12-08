@@ -347,6 +347,12 @@ footer .container div:last-child p{
     height: 80px;
     line-height: 80px;
 }
+.per_detail p input{
+  width: 350px;
+  height: 24px;
+  padding: 0 10px;
+  border: 1px solid #ccc;
+}
 .per_detail button{
     background-color: #ff8400;
     border: none;
@@ -379,7 +385,8 @@ footer .container div:last-child p{
     padding: 0 20px;
 }
 .state p span:last-child{
-    float:right;
+    /*float:right;*/
+  margin-left: 20px;
 }
 
 

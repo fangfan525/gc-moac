@@ -90,6 +90,44 @@ angular.module('moac')
           });
       };
 
+      $scope.getUserInfo = function() {
+        $http.get('/userCenter')
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              if(ret.msg === '你还没有登录'){
+                toastr.error(ret.msg);
+                $state.go('login');
+                return;
+              }
+              return toastr.error(ret.msg);
+            }
+            $scope.userInfo = ret.user;
+            $scope.userCurrency = ret.userCurrency;
+            $scope.trade = ret.trade;
+            $scope.reward = ret.reward;
+            $scope.balance = ret.balance;
+            $scope.tibi = ret.tibi;
+            $scope.order = ret.order;
+          });
+      };
+      $scope.getUserInfo();
+
+      $scope.submitTibi = function (tibi) {
+        if(!tibi || !tibi.addr || !tibi.amount){
+          toastr.warning('请将信息填写完整');
+          return;
+        }
+
+      }
+
     }])
 
+ .filter('status', function() {// 提币状态
+    return function (status) {
+      switch(status){
+        case 0: return '提币中';
+        case 1: return '提币成功';
+      }
+    }
+  })
 ;
