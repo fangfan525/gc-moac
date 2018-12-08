@@ -160,7 +160,7 @@ module.exports = {
         var reward= await Reward.find({user_id:user.id});
         //获取中奖记录的订单号
         for(var i=0;i<reward.length;i++){
-            reward[i]['order_no']=await Order.findOne({id:reward.order_id});
+            reward[i]['order_no']=await Order.findOne({id:reward[i].order_id});
 
         }
         //获取余额

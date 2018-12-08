@@ -15,7 +15,7 @@ module.exports = {
         var reward= await Reward.find();
         //获取中奖记录的订单号
         for(var i=0;i<reward.length;i++){
-            reward[i]['userinfo']=await User.findOne({id:reward.user_id});
+            reward[i]['userinfo']=await User.findOne({id:reward[i].user_id});
 
         }
         return res.json({

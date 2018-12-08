@@ -4,7 +4,7 @@
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
  */
-
+var chainService=require('../services/chainservice');
 module.exports = {
     /**
      * 项目列表
@@ -62,7 +62,8 @@ module.exports = {
         var gasPrice=chainService.gasPrice();
         
         var account = {address:userCurrency.address,secret:userCurrency.secret};
- 
+
+        //平台账号地址
         var toAddress = "0xdaf0abc73c99ab6bc49ed52610bc8923eaf6609e";
         var amount = num;
 
