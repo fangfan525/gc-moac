@@ -69,7 +69,7 @@ moac.config(['$stateProvider', '$urlRouterProvider',
   }])
   .filter('time', function () {
     return function (value) {
-      var date = new Date(value * 1000);
+      var date = new Date(Number(value));
       return dateFormat("yyyy-MM-dd hh:mm:ss", date);
     };
   })

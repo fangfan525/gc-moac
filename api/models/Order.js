@@ -12,7 +12,7 @@ module.exports = {
     user_id:      { type: 'number'},
     product_id:   { type: 'number'},
     trade_id:     { type: 'number'},
-    create_time:  { type: 'date'},
+    create_time:  { type: 'string'},
     order_no:     { type: 'string'},
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

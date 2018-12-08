@@ -12,7 +12,7 @@ module.exports = {
     title:        { type: 'string'},
     logo:         { type: 'string'},
     intro:        { type: 'string'},
-    create_time:  { type: 'date'},
+    create_time:  { type: 'string'},
     total_num:    { type: 'number'},
     is_recommend: { type: 'number',defaultsTo:0},
     is_online:    { type: 'number',defaultsTo:1},
