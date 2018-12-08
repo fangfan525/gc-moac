@@ -11,7 +11,7 @@ module.exports = {
     id:           { type: 'number', autoIncrement: true },
     user_id:      { type: 'number'},
     num:          { type: 'number'},
-    create_time:  { type: 'string'},
+    create_time:  { type: 'date'},
     hash:         { type: 'string'},
     status:       { type: 'string'},
     address:       { type: 'string'},

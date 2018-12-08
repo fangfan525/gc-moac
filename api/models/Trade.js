@@ -14,7 +14,7 @@ module.exports = {
     num:          { type: 'number'},
     gas:          { type: 'number'},
     hash:         { type: 'string'},
-    create_time:  { type: 'string'},
+    create_time:  { type: 'date'},
     status:       { type: 'number'},
 
 

@@ -12,7 +12,7 @@ module.exports = {
     email:        { type: 'string'},
     pwd:          { type: 'string'},
     pwdtrade:     { type: 'string'},
-    create_time:  { type: 'string'},
+    create_time:  { type: 'date'},
     idcard:       { type: 'string'},
     name:         { type: 'string'},
     phone:        { type: 'string'},
