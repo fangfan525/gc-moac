@@ -52,6 +52,12 @@ module.exports = {
 
         //获取项目信息
         var product =await Product.findOne({id:id});
+        if(product.current_num>=product.total_num){
+            return res.json({
+                code:0,
+                msg:'该项目已投满',
+            });
+        }
         //购买的票数
         var ticket=product.num/num;
         //生成单号
@@ -83,6 +89,8 @@ module.exports = {
             for(var i=0;i<=ticket;i++){
                 await Order.create({user_id:user.id,product_id:product.id,trade_id:trade.id,create_time:timestamp,order_no:timestamp+rnd});
             }
+            //更新项目的当前投数
+            await Product.update({id:id},{current_num:product.current_num+num});
 
             return res.json({
                 code:1,
