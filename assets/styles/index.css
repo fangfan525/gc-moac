@@ -25,7 +25,7 @@ header span{
     color: #fff;
     margin-right:72px;
 }
-header span.selected{
+header span:first-child{
     color: #ffbf0c;
 }
 
@@ -111,6 +111,11 @@ header span.selected{
     width: 200px;
     height: 200px;
 }
+.list p{
+  text-align: center;
+  margin: 5px 0;
+  font-size: 16px;
+}
 .scroll{
     width: 438px;
     display: table-cell;
@@ -135,7 +140,7 @@ header span.selected{
     top: -12px;
 }
 .progress-bar{
-    width: 75%;
+    /*width: 75%;*/
     position: relative;
     border-radius: 10px 0 0 10px;
     animation: animate-positive 2s;

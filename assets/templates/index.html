@@ -10,7 +10,9 @@
       </ul>
       <div class="login">
         <!--<a ui-sref="login"><span>登录</span></a>-->
-        <a ui-sref="login"><span>登录/注册</span></a>
+        <a ui-sref="login"  ng-show="!user"><span>登录/注册</span></a>
+        <a href="javascript:void(0);" ng-show="user"><span>{{ user }}</span></a>
+        <a href="javascript:void(0);"  ng-show="user" ng-click="logout();"><span>退出</span></a>
       </div>
     </div>
   </div>
