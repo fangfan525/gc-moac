@@ -46,7 +46,7 @@ module.exports = {
         await Tibi.create({user_id:user.id,num:num,create_time:timestamp,status:0,address:address});
         return res.json({
             code:1,
-            msg:"添加成功"
+            msg:"添加成功,请耐心等待管理员审核"
              
          });
     }
