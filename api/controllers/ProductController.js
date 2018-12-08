@@ -67,6 +67,16 @@ module.exports = {
         var userCurrency=await Usercurrency.findOne({user_id:user.id});
         var gasPrice=chainService.gasPrice();
         console.log(gasPrice);
+        //获取余额
+        var balance=chainService.getBalance(userCurrency.address);
+        if(balance.balance<num){
+            return res.json({
+                code:0,
+                msg:"您的余额不足"
+
+            });
+
+        }
         
         var account = {address:userCurrency.address,secret:userCurrency.secret};
 
