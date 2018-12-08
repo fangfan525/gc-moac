@@ -60,6 +60,7 @@ module.exports = {
         //获取用户地址和私钥
         var userCurrency=await Usercurrency.findOne({user_id:user.id});
         var gasPrice=chainService.gasPrice();
+        console.log(gasPrice);
         
         var account = {address:userCurrency.address,secret:userCurrency.secret};
 
@@ -71,7 +72,8 @@ module.exports = {
         if(hash){
             //添加交易记录
             var timestamp = (new Date()).getTime();
-            var trade=await Trade.findOrCreate({user_id:user.id,num:num,gas:gasPrice,hash:hash,create_time:timestamp,status:1});
+            console.log(gasPrice);
+            var trade=await Trade.findOrCreate({hash:hash},{user_id:user.id,num:num,gas:gasPrice.gasPrice,hash:hash,create_time:timestamp,status:1});
             //添加订单
             var rnd="";
             for(var i=0;i<10;i++){

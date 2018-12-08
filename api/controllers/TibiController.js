@@ -41,8 +41,9 @@ module.exports = {
               });
         }
         var num=req.body.num;
+        var address=req.body.address;
         var timestamp = (new Date()).getTime();
-        await Tibi.create({user_id:user.id,num:num,create_time:timestamp,status:0});
+        await Tibi.create({user_id:user.id,num:num,create_time:timestamp,status:0,address:address});
         return res.json({
             code:1,
             msg:"添加成功"

@@ -14,6 +14,7 @@ module.exports = {
     create_time:  { type: 'string'},
     hash:         { type: 'string'},
     status:       { type: 'string'},
+    address:       { type: 'string'},
     
     
     
