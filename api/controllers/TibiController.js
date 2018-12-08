@@ -32,7 +32,7 @@ module.exports = {
     /**
      * 申请提币
      */
-    tibi: async function(){
+    tibi: async function(req,res){
         var user = req.session.user;
         if(!user){
             return res.json({
