@@ -13,46 +13,38 @@ module.exports = {
     register:async function(req,res){
         var email=req.body.email;
         var pwd=req.body.pwd;
-        var verifyCode = req.body.verify_code;
         // var pwdtrade=req.body.pwdtrade;
         if(!email){
-            res.json({
+            return res.json({
                 code:0,
                 msg:"邮箱不能为空"
             });
         }
         if(!pwd){
-            res.json({
+            return res.json({
                 code:0,
                 msg:"密码不能为空"
             });
         }
-        // if(!pwdtrade){
-        //     res.json({
-        //         code:0,
-        //         msg:"交易密码不能为空"
-        //     });
-        // }
-    if (verifyCode !== req.session.verifyCode) {
-      return res.feedback(false, null, CONST.ERR_INVALID_CODE);
-    }
-    // expired 300s
-    var now = new Date().getTime();
-    if (now - req.session.verifyCodeTime > 60000 * 5) {
-      return res.feedback(false, null, CONST.ERR_CODE_TIMEOUT);
-    }
+       /* if(!pwdtrade){
+            return res.json({
+                code:0,
+                msg:"交易密码不能为空"
+            });
+        }*/
         var user=await User.findOne({email:email});
         if(user){
-            res.json({
+            return res.json({
                 code:0,
                 msg:"该账号已存在"
             });
         }
         var timestamp = (new Date()).getTime();
-        var usercreate=await User.findOrCreate({email : email},{email:email,pwd:pwd,/*pwdtrade:pwdtrade,*/create_time:timestamp});
+        var usercreate=await User.findOrCreate({email:email},{email:email,pwd:pwd,create_time:timestamp});
         //添加地址
         var account=chainService.getAccount();
-        await Usercurrency.create({user_id:usercreate.id,num:0,address:account});
+        //console.log(usercreate.id);
+        await Usercurrency.create({user_id:usercreate.id,num:0,address:account.address,secret:account.privateKey});
         req.session.user = usercreate;
 
         res.json({
