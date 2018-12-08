@@ -31,9 +31,9 @@
       <div ng-show="personTab === 'account'">
         <h5>账号管理</h5>
         <div class="per_detail">
-          <p>账号：</p>
-          <p>地址：</p>
-          <p>余额：</p>
+          <p>账号：{{userInfo.email}}</p>
+          <p>地址：{{userCurrency.address}}</p>
+          <p>余额：{{balance.balance}}</p>
         </div>
         <div class="record">
           <ul>
@@ -42,15 +42,15 @@
             <li ng-class="{selected : recordTab === 'record3'}" ng-click="recordTab = 'record3'">中奖记录</li>
           </ul>
           <div ng-show="recordTab === 'record1'">
-            <p>2018-10-01 13:00:00 捐赠 2 Moac</p>
-            <p>2018-10-01 14:00:00 捐赠 4 Moac</p>
+            <p ng-repeat="tr in trade">{{tr.create_time | time}} 捐赠 {{tr.num}} Moac，交易哈希： {{tr.hash}}</p>
+            <!--<p>2018-10-01 14:00:00 捐赠 4 Moac</p>-->
           </div>
           <div ng-show="recordTab === 'record2'">
-            <p>2018-10-02 09:00:00 提币 5 Moac</p>
-            <p>2018-10-02 23:00:00 提币 10 Moac</p>
+            <p ng-repeat="ti in tibi">{{ti.create_time | time}} 提币 {{ti.num}} Moac, 状态: {{ti.status | status}} , 交易哈希： {{ti.hash}}</p>
+            <!--<p>2018-10-02 23:00:00 提币 10 Moac</p>-->
           </div>
           <div ng-show="recordTab === 'record3'">
-            <p>2018-10-01 13:00:00 中奖 200 Moac</p>
+            <p ng-repeat="re in reward">{{re.create_time | time}} 中奖 {{re.num}} Moac, 中奖单号：{{re.order_no.order_no}}</p>
           </div>
         </div>
       </div>
@@ -58,18 +58,16 @@
       <div  ng-show="personTab === 'money'">
         <h5>提币</h5>
         <div class="per_detail">
-          <p>账号：</p>
-          <p>地址：</p>
-          <p class="per_detail_p"><button>发起提币</button></p>
+          <p>地址：<input type="text" ng-model="tibi.addr"></p>
+          <p>金额：<input type="text" ng-model="tibi.amount"></p>
+          <p class="per_detail_p"><button ng-click="submitTibi(tibi);">发起提币</button></p>
         </div>
       </div>
 
       <div ng-show="personTab === 'order'">
         <h5>单号</h5>
         <div class="per_detail state">
-          <p><span>41587876631446</span><span>中奖【二等奖】</span></p>
-          <p><span>97784093093983</span><span>未中奖</span></p>
-          <p><span>25447795614414</span><span>待开奖</span></p>
+          <p ng-repeat="ord in order"><span>{{ord.create_time | time}}</span><span>{{ord.order_no}}</span></p>
         </div>
       </div>
 

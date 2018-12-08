@@ -26,8 +26,8 @@
           </div>
 
           <div class="login_con" ng-show="tab==='login'">
-            <div><input type="email" placeholder="请输入邮箱" ng-model="user.email"></div>
-            <div><input type="password" placeholder="请输入密码" ng-model="user.password"></div>
+            <div><input type="email" placeholder="请输入邮箱" ng-model="loginU.email"></div>
+            <div><input type="password" placeholder="请输入密码" ng-model="loginU.password"></div>
             <div class="slider">
               <div class="drag">
                 <div class="drag_bg"></div>
@@ -35,18 +35,18 @@
                 <div class="handler handler_bg"></div>
               </div>
             </div>
-            <div><button class="login_btn" ng-click="login(user);">登录</button></div>
+            <div><button class="login_btn" ng-click="login(loginU);">登录</button></div>
             <div class="forgot"><p><a href="javascript:void(0)" ng-click="tab='register'">免费注册帐户</a> | <a ui-sref="forgot">忘记密码</a></p></div>
           </div >
 
 
           <div class="login_con" ng-show="tab==='register'">
-            <div><input type="email" placeholder="请输入邮箱" ng-model="user.email"></div>
-            <div class="send"><input type="password" placeholder="请输入验证码" ng-model="user.verify_code"><span ng-click="sendEmail(user)">发送验证码</span></div>
-            <div><input type="password" placeholder="请输入密码" ng-model="user.pwd"></div>
-            <div><input type="password" placeholder="请确认密码" ng-model="user.pwd2"></div>
+            <div><input type="email" placeholder="请输入邮箱" ng-model="registerU.email"></div>
+            <div class="send"><input type="password" placeholder="请输入验证码" ng-model="registerU.verify_code"><span ng-click="sendEmail(registerU)">发送验证码</span></div>
+            <div><input type="password" placeholder="请输入密码" ng-model="registerU.pwd"></div>
+            <div><input type="password" placeholder="请确认密码" ng-model="registerU.pwd2"></div>
 
-            <div><button class="login_btn"  ng-click="register(user)">下一步</button></div>
+            <div><button class="login_btn"  ng-click="register(registerU)">下一步</button></div>
             <div class="forgot"><p>已有帐户 | <a href="javascript:void(0)" ng-click="tab='login'">去登录</a></p></div>
           </div>
 

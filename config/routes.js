@@ -35,7 +35,7 @@ module.exports.routes = {
   //退出登录
   'GET /logout': 'UserController.logout',
   //个人中心
-  'POST /userCenter': 'UserController.userCenter',
+  'GET /userCenter': 'UserController.userCenter',
 
   //发送邮箱验证码
   'GET /util/email': 'UtilsController.sendEmailCode',
