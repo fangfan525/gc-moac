@@ -19,6 +19,7 @@ module.exports = {
     num:          { type: 'number'},
     current_num:  { type: 'number'},
     address:      { type: 'string'},
+    status:      { type: 'number'},
 
 
 

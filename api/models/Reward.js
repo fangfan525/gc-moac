@@ -14,6 +14,8 @@ module.exports = {
     create_time:  { type: 'string'},
     product_id:   { type: 'number'},
     order_id:     { type: 'number'},
+    hash:          { type: 'string'},
+    status:       { type: 'number'},
     
     
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

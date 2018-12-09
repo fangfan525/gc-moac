@@ -85,7 +85,35 @@ module.exports = {
      */
     lotterySjr: async function(req,res){
         var id=req.body.id;
-        var reward=await Reward.findOne({id:id});
+        var ptrade=await Ptrade.findOne({id:id});
+        var product=await Product.findOne({id:ptrade.product_id});
+        //给受捐人打款，添加交易记录
+        var gasPrice=chainService.gasPrice();
+
+        var account = {address:"0xdaf0abc73c99ab6bc49ed52610bc8923eaf6609e",secret:"9848e5896a98778a106505ece37e63a9f0d68a339767ea794f65420e0e25ff87"};
+
+        var toAddress = product.address;
+        var amount = ptrade.num;
+
+        var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
+
+        if(hash){
+            await Reward.update({hash:hash,status:1});
+            return res.json({
+                code:0,
+                msg:"打款成功"
+
+            });
+
+
+        }else{
+            return res.json({
+                code:1,
+                msg:"打款失败"
+
+            });
+
+        }
 
 
     },
@@ -94,11 +122,36 @@ module.exports = {
      * 给中奖人打款
      */
     lotteryZjr: async function(req,res){
-        var list=await Reward.find();
-        return res.json({
-            code:0,
-            list:list
-        });
+
+        var id=req.body.id;
+        var reward=await Reward.findOne({id:id});
+        var product=await Product.findOne({id:reward.product_id});
+        //给受捐人打款，添加交易记录
+        var gasPrice=chainService.gasPrice();
+
+        var account = {address:"0xdaf0abc73c99ab6bc49ed52610bc8923eaf6609e",secret:"9848e5896a98778a106505ece37e63a9f0d68a339767ea794f65420e0e25ff87"};
+
+        var toAddress = product.address;
+        var amount = reward.num;
+
+        var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
+
+        if(hash){
+            await Reward.update({hash:hash,status:1});
+            return res.json({
+                code:0,
+                msg:"打款成功"
+
+            });
+
+        }else{
+            return res.json({
+                code:1,
+                msg:"打款失败"
+
+            });
+
+        }
 
     },
 
