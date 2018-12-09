@@ -1,147 +1,4 @@
 module.exports = {
-  
-  //首页页面
-  index: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/statistics', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //修改密码页面
-  changepwd: function (req, res) {
-    if (req.session.admin) {
-      var id = req.session.admin.id;
-      res.view('admin/changepwd', {
-        layout: 'admin/layout',
-        id: id,
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //项目列表页面
-  productList: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/productList', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //文章管理页面
-  article: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/article', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //文章添加/编辑页面
-  addArticle: function (req, res) {
-    var id = req.param('id');
-    if (req.session.admin) {
-      res.view('admin/addArticle', {
-        layout: 'admin/layout',
-        id: id,
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //banner管理页面
-  flash: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/flash', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //banner添加/编辑页面
-  addFlash: function (req, res) {
-    var id = req.param('id');
-    if (req.session.admin) {
-      res.view('admin/addFlash', {
-        layout: 'admin/layout',
-        id: id
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //交易对管理页面
-  trade: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/trade', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //交易对添加/编辑页面
-  addTrade: function (req, res) {
-    var id = req.param('id');
-    if (req.session.admin) {
-      res.view('admin/addTrade', {
-        layout: 'admin/layout',
-        id: id
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //授信管理页面
-  credit: function (req, res) {
-    if (req.session.admin) {
-      res.view('admin/credit', {
-        layout: 'admin/layout'
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  
-  
-  //订单管理
-  order: function (req, res) {
-    var id = req.param('id');
-    if (req.session.admin) {
-      res.view('admin/order', {
-        layout: 'admin/layout',
-        id: id
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //平台账号管理
-  usersAccount: function (req, res) {
-    var id = req.param('id');
-    if (req.session.admin) {
-      res.view('admin/usersAccount', {
-        layout: 'admin/layout',
-        id: id
-      });
-    } else {
-      return res.redirect('/admin/login');
-    }
-  },
-  //登录页面
-  login: function (req, res) {
-    if (req.session.admin) {
-      return res.redirect('/admin');
-    } else {
-      res.view('admin/login');
-    }
-  },
   /*
   * 管理员登录
   * @param req
@@ -167,7 +24,7 @@ module.exports = {
           code: 0,
           msg: '管理员不存在'
         });
-        
+
       } else if (password != model.password) {
         return res.json({
           code: 0,
@@ -200,7 +57,7 @@ module.exports = {
       msg:'退出成功',
     });*/
   },
- 
+
   /*
   * 获取管理员列表
   * @param req
@@ -226,7 +83,7 @@ module.exports = {
       });
     });
   },
-  
+
   /***
    * 管理端获取用户列表
    * @param req
@@ -264,9 +121,9 @@ module.exports = {
       });
     });
   },
-  
 
-  
- 
-  
+
+
+
+
 }
