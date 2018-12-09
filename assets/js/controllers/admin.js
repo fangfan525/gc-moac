@@ -2,14 +2,10 @@
 
 angular.module('moac')
   .run(['$rootScope', '$state', function($rootScope, $state){
-    // $rootScope.isLogin = localStorage.getItem('isLogin') === 'true' ;
-    // $rootScope.isAdmin = localStorage.getItem('isAdmin')=== 'true';
-    // $rootScope.user = JSON.parse(localStorage.getItem('user'));
-    //
-    // $rootScope.effect = 'random';
-    // if (!$rootScope.isLogin) {
-    //   $state.go('index');
-    // }
+    $rootScope.admin = localStorage.getItem('admin');
+    if (!$rootScope.admin) {
+      $state.go('adLogin');
+    }
   }])
 
   .controller('AdminLoginCtrl', ['$scope', '$rootScope', '$http', '$state',
@@ -36,6 +32,10 @@ angular.module('moac')
     }])
   .controller('AdminCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {
+      if (!$rootScope.admin) {
+        $state.go('adLogin');
+        return;
+      }
       document.getElementsByTagName('header')[0].style.display = 'none';
       document.getElementsByTagName('footer')[0].style.display = 'none';
       $scope.adTab = 'ad1';
@@ -49,15 +49,54 @@ angular.module('moac')
           });
       };
       $scope.getAdprods();
-      $scope.lottery = function (id) {
+      $scope.lottery = function (id) {//项目放款
         $http.post('/admins/lottery',{id: id})
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            $scope.getAdprods();
+            return toastr.success(ret.msg);
+          });
+      };
+      $scope.getPtradeList = function () {
+        $http.get('/admins/ptradeList')
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            $scope.ptradeList = ret.list;
+          });
+      };
+      $scope.getRewardList = function () {
+        $http.get('/admins/rewardList')
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            console.log(JSON.stringify(ret.list));
+            $scope.rewardList = ret.list;
+          });
+      };
+
+      $scope.lotterySjr = function (id) { //给受捐人打款
+        $http.post('/admins/lotterySjr',{id: id})
           .success(function(ret, status) {
             if (!ret.code || status !== 200) {
               return toastr.error(ret.msg);
             }
             return toastr.success(ret.msg);
           });
-      }
+      };
+      $scope.lotteryZjr = function (id) {//给中奖人打款
+        $http.post('/admins/lotteryZjr',{id: id})
+          .success(function(ret, status) {
+            if (!ret.code || status !== 200) {
+              return toastr.error(ret.msg);
+            }
+            return toastr.success(ret.msg);
+          });
+      };
 
 
     }])
@@ -74,6 +113,14 @@ angular.module('moac')
       switch(adStatus2){
         case 0: return '未放款';
         case 1: return '已放款';
+      }
+    }
+  })
+  .filter('adStatus3', function() {// 放款状态
+    return function (adStatus3) {
+      switch(adStatus3){
+        case 0: return '未打款';
+        case 1: return '已打款';
       }
     }
   })

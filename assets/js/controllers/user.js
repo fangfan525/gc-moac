@@ -36,6 +36,7 @@ angular.module('moac')
         });
     };
     $rootScope.adLogout = function() {
+      $rootScope.admin = null;
       $state.go('adLogin');
     };
   }])
