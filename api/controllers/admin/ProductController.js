@@ -47,7 +47,7 @@ module.exports = {
         await Reward.findOrCreate({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
         await Product.update({id:product.id},{status:1});
         return res.json({
-            code:0,
+            code:1,
             msg:"放款成功"
 
         });
@@ -225,8 +225,8 @@ module.exports = {
             });
 
         }
-    
-  
+
+
 
 }
 };
