@@ -54,17 +54,11 @@ module.exports.routes = {
   'POST /tibi': 'TibiController.tibi',
 
 
-  /*后台管理界面 */
-  //后台首页
-  'GET /admin': 'admin/AdminController.index',
-  //项目列表页面
-  'GET /admin/productList': 'admin/AdminController.productList',
-
-
-
   /*后台请求接口 */
+  //管理员登陆
+  'POST /adminLogin': 'admin/AdminController.adminLogin',
   //项目列表数据
-  'POST /admins/productList': 'admin/ProductController.productList',
+  'GET /admins/productList': 'admin/ProductController.productList',
   //项目放款
   'POST /admins/lottery': 'admin/ProductController.lottery',
   //受捐记录

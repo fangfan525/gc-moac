@@ -28,9 +28,9 @@
         <h5>产品列表</h5>
         <div class="ad_prodList">
           <table border="1">
-            <tr><td>id</td><td>标题</td><td>logo</td><td>单子数</td><td>总数</td><td>当前数</td><td>状态</td><td>操作</td></tr>
-            <tr><td>1</td><td>救助孤寡老人</td><td><img src="../images/item1.jpg" alt=""></td><td>2</td><td>10</td><td>3</td><td>未放款</td><td style="color:blue;">放款</td></tr>
-            <tr><td>1</td><td>救助孤寡老人</td><td><img src="../images/item2.jpg" alt=""></td><td>2</td><td>10</td><td>3</td><td>未放款</td><td style="color:blue;">放款</td></tr>
+            <tr><td>id</td><td>标题</td><td>logo</td><td>起投数量</td><td>总数</td><td>当前数</td><td>状态</td><td>是否放款</td><td>操作</td></tr>
+            <tr ng-repeat="pro in adProds"><td>{{pro.id}}</td><td>{{pro.title}}</td><td><img src="{{pro.logo}}" alt=""></td><td>{{pro.num}}</td><td>{{pro.total_num}}</td><td>{{pro.current_num}}</td><td>{{pro.is_online | adStatus}}</td><td>{{pro.status | adStatus2}}</td><td style="color:blue;" ng-click="lottery(pro.id);">放款</td></tr>
+            <!--<tr><td>1</td><td>救助孤寡老人</td><td><img src="../images/item2.jpg" alt=""></td><td>2</td><td>10</td><td>3</td><td>未放款</td><td style="color:blue;">放款</td></tr>-->
           </table>
         </div>
       </div>
