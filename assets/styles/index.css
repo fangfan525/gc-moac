@@ -539,6 +539,8 @@ footer .container div:last-child p{
 }
 .login_register .icon{
     width: 520px;
+    background: url(../images/login_img.jpg) no-repeat;
+    background-size: cover;
 }
 
 /*忘记密码*/
