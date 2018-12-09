@@ -89,15 +89,17 @@ module.exports = {
             //添加交易记录
             var timestamp = (new Date()).getTime();
             console.log(gasPrice);
-            var trade=await Trade.findOrCreate({hash:hash},{user_id:user.id,num:num,gas:gasPrice.gasPrice,hash:hash,create_time:timestamp,status:1});
-            //添加订单
-            var rnd="";
-            for(var i=0;i<10;i++){
-                rnd+=Math.floor(Math.random()*10);
-            }
+            var trade=await Trade.findOrCreate({hash:hash},{user_id:user.id,num:num,gas:gasPrice.gasPrice,hash:hash,create_time:timestamp,status:1,product_id:product.id});
+
             
             for(var i=0;i<=ticket;i++){
-                await Order.create({user_id:user.id,product_id:product.id,trade_id:trade.id,create_time:timestamp,order_no:timestamp+rnd});
+                var timestamp1 = (new Date()).getTime();
+                //添加订单
+                var rnd="";
+                for(var i=0;i<10;i++){
+                    rnd+=Math.floor(Math.random()*10);
+                }
+                await Order.create({user_id:user.id,product_id:product.id,trade_id:trade.id,create_time:timestamp,order_no:timestamp1+rnd});
             }
             //更新项目的当前投数
             await Product.update({id:id},{current_num:product.current_num+num});

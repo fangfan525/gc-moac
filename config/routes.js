@@ -67,6 +67,14 @@ module.exports.routes = {
   'POST /admins/productList': 'admin/ProductController.productList',
   //项目放款
   'POST /admins/lottery': 'admin/ProductController.lottery',
+  //受捐记录
+  'POST /admins/ptradeList': 'admin/ProductController.ptradeList',
+  //中奖记录
+  'POST /admins/rewardList': 'admin/ProductController.rewardList',
+  //给受捐人打款
+  'POST /admins/lotterySjr': 'admin/ProductController.lotterySjr',
+  //给中奖人打款
+  'POST /admins/lotteryZjr': 'admin/ProductController.lotteryZjr',
 
 
 

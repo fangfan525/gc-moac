@@ -16,6 +16,7 @@ module.exports = {
     hash:         { type: 'string'},
     create_time:  { type: 'string'},
     status:       { type: 'number'},
+    product_id:   { type: 'number'},
 
 
     //  ╔═╗╦═╗╦╔╦╗╦╔╦╗╦╦  ╦╔═╗╔═╗

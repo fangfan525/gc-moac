@@ -30,6 +30,91 @@ module.exports = {
         var arr = new Array();
         for(var i=0;i<orders.length;i++){
             arr[i]=orders[i].order_no;
+        }
+        var item = arr[Math.floor(Math.random()*arr.length)];
+
+        var userOrder=await Order.findOne({order_no:item});
+        //获取项目信息
+        var product=await Product.findOne({id:product_id});
+
+        //给受捐人打款，添加交易记录
+        var amount = product.total_num*0.5;
+        var timestamp = (new Date()).getTime();
+        await Ptrade.findOrCreate({num:amount,gas:0,hash:"",create_time:timestamp,status:0,product_id:product.id});
+
+        //给中奖用户打款，添加中奖记录，和交易记录
+        var amountu = product.total_num*0.4;
+        await Reward.findOrCreate({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
+        return res.json({
+            code:0,
+            msg:"放款成功"
+
+        });
+
+    },
+    /**
+     *
+     * 项目方记录
+     */
+    ptradeList: async function(req,res){
+        var list=await Ptrade.find();
+        return res.json({
+            code:0,
+            list:list
+
+        });
+
+    },
+
+    /**
+     *
+     * 用户中间记录
+     */
+    rewardList: async function(req,res){
+        var list=await Reward.find();
+        return res.json({
+            code:0,
+            list:list
+
+        });
+
+    },
+
+    /**
+     * 给受捐人打款
+     */
+    lotterySjr: async function(req,res){
+        var id=req.body.id;
+        var reward=await Reward.findOne({id:id});
+
+
+    },
+
+    /**
+     * 给中奖人打款
+     */
+    lotteryZjr: async function(req,res){
+        var list=await Reward.find();
+        return res.json({
+            code:0,
+            list:list
+        });
+
+    },
+
+
+
+    /**
+     *
+     * 放款
+     */
+    lottery1111: async function(req,res){
+        var product_id=req.body.id;
+        //选取信用观众
+        var orders=await Order.find({product_id:product_id});
+        var arr = new Array();
+        for(var i=0;i<orders.length;i++){
+            arr[i]=orders[i].order_no;
 
         }
         var item = arr[Math.floor(Math.random()*arr.length)];
@@ -86,17 +171,9 @@ module.exports = {
             });
 
         }
-
-
-
-
-
-
-
-
-    }
     
   
 
+}
 };
 
