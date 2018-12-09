@@ -45,6 +45,7 @@ module.exports = {
         //给中奖用户打款，添加中奖记录，和交易记录
         var amountu = product.total_num*0.4;
         await Reward.findOrCreate({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
+        await Product.update({id:product.id},{status:1});
         return res.json({
             code:0,
             msg:"放款成功"
@@ -98,7 +99,7 @@ module.exports = {
         var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
 
         if(hash){
-            await Reward.update({hash:hash,status:1});
+            await Ptrade.update({id:Ptrade.id},{hash:hash,status:1});
             return res.json({
                 code:0,
                 msg:"打款成功"
@@ -137,7 +138,7 @@ module.exports = {
         var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
 
         if(hash){
-            await Reward.update({hash:hash,status:1});
+            await Reward.update({id:reward.id},{hash:hash,status:1});
             return res.json({
                 code:0,
                 msg:"打款成功"
