@@ -65,6 +65,16 @@ moac.config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'templates/users/person.html',
         controller:'PersonCtrl'
       })
+      .state('adLogin', {
+        url: '/adLogin',
+        templateUrl: 'templates/adLlogin.html',
+        controller:'AdminLoginCtrl'
+      })
+      .state('admin', {
+        url: '/admin',
+        templateUrl: 'templates/admin.html',
+        controller:'AdminCtrl'
+      })
     ;
   }])
   .filter('time', function () {

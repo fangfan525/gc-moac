@@ -35,6 +35,9 @@ angular.module('moac')
           $state.go('login');
         });
     };
+    $rootScope.adLogout = function() {
+      $state.go('adLogin');
+    };
   }])
   .controller('ForgotCtrl', ['$scope', '$rootScope', '$http', '$state',
     function ($scope, $rootScope, $http, $state) {

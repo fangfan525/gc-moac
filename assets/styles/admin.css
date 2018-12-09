@@ -1,0 +1,108 @@
+.login-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url(../images/back.jpg) no-repeat center;
+  background-size: cover;
+}
+
+.adLogin {
+  margin: 120px auto 0 auto;
+  min-height: 420px;
+  max-width: 420px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.adLogin .message {
+  padding: 18px 35px;
+  background: #ff8400;
+  position: relative;
+  color: #fff;
+  font-size: 16px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.adLogin input[type=text],
+.adLogin input[type=password] {
+  border: 1px solid #DCDEE0;
+  vertical-align: middle;
+  border-radius: 3px;
+  height: 50px;
+  padding: 0px 16px;
+  font-size: 14px;
+  color: #555555;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 14px 0;
+}
+
+.adLogin input[type=text]:focus,
+.adLogin input[type=password]:focus {
+  border: 1px solid #27A9E3;
+}
+
+.adLogin input[type=submit] {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 12px 24px;
+  margin: 0px;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  color: #ffffff;
+  background-color: #ff8400;
+  border-radius: 3px;
+  border: none;
+  -webkit-appearance: none;
+  outline: none;
+  width: 100%;
+}
+
+.adLogin hr.hr12 {
+  height: 12px;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+}
+.adContent{
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+}
+.ad_prodList table{
+  width: 100%;
+  background-color: #fff;
+  border-collapse: collapse
+}
+.ad_prodList table tr{
+  border: 1px solid #eee;
+  height: 60px;
+}
+.ad_prodList table tr td:last-child{
+  cursor: pointer;
+  corlor:blue;
+}
+.ad_prodList table tr:first-child td{
+  cursor: default;
+  background-color: #ff8400;
+  color:#fff;
+}
+.ad_prodList table tr td{
+  text-align: center;
+}
+.ad_prodList table tr td img{
+  height:40px;
+}
+
