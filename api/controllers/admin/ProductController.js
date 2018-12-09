@@ -40,11 +40,11 @@ module.exports = {
         //给受捐人打款，添加交易记录
         var amount = product.total_num*0.5;
         var timestamp = (new Date()).getTime();
-        await Ptrade.findOrCreate({num:amount,gas:0,hash:"",create_time:timestamp,status:0,product_id:product.id});
+        await Ptrade.create({num:amount,gas:0,hash:"",create_time:timestamp,status:0,product_id:product.id});
 
         //给中奖用户打款，添加中奖记录，和交易记录
         var amountu = product.total_num*0.4;
-        await Reward.findOrCreate({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
+        await Reward.create({user_id:userOrder.user_id,num:amountu,create_time:timestamp,product_id:product_id,order_id:userOrder.id});
         await Product.update({id:product.id},{status:1});
         return res.json({
             code:1,
@@ -99,7 +99,7 @@ module.exports = {
         var hash = chainService.send(account.address, account.secret, toAddress, amount, txCount = -1,gasPrice.gasPrice);
 
         if(hash){
-            await Ptrade.update({id:Ptrade.id},{hash:hash,status:1});
+            await Ptrade.update({id:ptrade.id},{hash:hash,status:1});
             return res.json({
                 code:1,
                 msg:"打款成功"

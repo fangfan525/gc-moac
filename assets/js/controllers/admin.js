@@ -85,6 +85,7 @@ angular.module('moac')
             if (!ret.code || status !== 200) {
               return toastr.error(ret.msg);
             }
+              $scope.getPtradeList();
             return toastr.success(ret.msg);
           });
       };
@@ -94,6 +95,7 @@ angular.module('moac')
             if (!ret.code || status !== 200) {
               return toastr.error(ret.msg);
             }
+              $scope.getRewardList();
             return toastr.success(ret.msg);
           });
       };
