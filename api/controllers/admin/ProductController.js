@@ -60,7 +60,7 @@ module.exports = {
     ptradeList: async function(req,res){
         var list=await Ptrade.find();
         return res.json({
-            code:0,
+            code:1,
             list:list
 
         });
@@ -74,7 +74,7 @@ module.exports = {
     rewardList: async function(req,res){
         var list=await Reward.find();
         return res.json({
-            code:0,
+            code:1,
             list:list
 
         });
@@ -101,7 +101,7 @@ module.exports = {
         if(hash){
             await Ptrade.update({id:Ptrade.id},{hash:hash,status:1});
             return res.json({
-                code:0,
+                code:1,
                 msg:"打款成功"
 
             });
@@ -109,7 +109,7 @@ module.exports = {
 
         }else{
             return res.json({
-                code:1,
+                code:0,
                 msg:"打款失败"
 
             });
@@ -140,14 +140,14 @@ module.exports = {
         if(hash){
             await Reward.update({id:reward.id},{hash:hash,status:1});
             return res.json({
-                code:0,
+                code:1,
                 msg:"打款成功"
 
             });
 
         }else{
             return res.json({
-                code:1,
+                code:0,
                 msg:"打款失败"
 
             });
