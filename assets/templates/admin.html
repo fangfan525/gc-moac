@@ -1,0 +1,75 @@
+<div class="banner">
+  <div class="nav">
+    <div class="container">
+      <div class="logo v-center"></div>
+      <div class="login">
+        <a href="javascript:void(0);"  ui-sref="person"><span>admin</span></a>
+        <a href="javascript:void(0);"  ng-click="adLogout();"><span>退出</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content adContent">
+  <div class="container">
+    <div class="left">
+      <ul>
+        <li ng-class="{'selected': adTab === 'ad1'}" ng-click="adTab = 'ad1'">产品列表</li>
+        <li ng-class="{'selected': adTab === 'ad2'}"  ng-click="adTab = 'ad2'">用户管理</li>
+        <li ng-class="{'selected': adTab === 'ad3'}"  ng-click=" adTab = 'ad3'">提币管理</li>
+        <li ng-class="{'selected': adTab === 'ad4'}"  ng-click=" adTab = 'ad4'">中奖管理</li>
+        <li ng-class="{'selected': adTab === 'ad5'}"  ng-click=" adTab = 'ad5'">单号管理</li>
+        <li ng-class="{'selected': adTab === 'ad6'}"  ng-click=" adTab = 'ad6'">轮播管理</li>
+        <li ng-class="{'selected': adTab === 'ad7'}"  ng-click=" adTab = 'ad7'">支持管理</li>
+      </ul>
+    </div>
+    <div class="right">
+      <div ng-show="adTab === 'ad1'">
+        <h5>产品列表</h5>
+        <div class="ad_prodList">
+          <table border="1">
+            <tr><td>id</td><td>标题</td><td>logo</td><td>单子数</td><td>总数</td><td>当前数</td><td>状态</td><td>操作</td></tr>
+            <tr><td>1</td><td>救助孤寡老人</td><td><img src="../images/item1.jpg" alt=""></td><td>2</td><td>10</td><td>3</td><td>未放款</td><td style="color:blue;">放款</td></tr>
+            <tr><td>1</td><td>救助孤寡老人</td><td><img src="../images/item2.jpg" alt=""></td><td>2</td><td>10</td><td>3</td><td>未放款</td><td style="color:blue;">放款</td></tr>
+          </table>
+        </div>
+      </div>
+      <div  ng-show="adTab === 'ad2'">
+        <h5>用户管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+      <div ng-show="adTab === 'ad3'">
+        <h5>提币管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+      <div ng-show="adTab === 'ad4'">
+        <h5>中奖管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+      <div ng-show="adTab === 'ad5'">
+        <h5>单号管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+      <div ng-show="adTab === 'ad6'">
+        <h5>轮播管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+      <div ng-show="adTab === 'ad7'">
+        <h5>支持管理</h5>
+        <div class="per_detail">
+          <p>暂无内容</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
